@@ -79,7 +79,7 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
     <td><?php echo $row_Recordset1['name']; ?></td>
     <td><?php echo $row_Recordset1['Old']; ?></td>
     <td><?php echo $row_Recordset1['Addr']; ?></td>
-    <td>更新</td>
+    <td><a href="update.php?id=<?php echo $row_Recordset1['id']; ?>">更新</a></td>
     <td>刪除</td>
   </tr>
 </table>

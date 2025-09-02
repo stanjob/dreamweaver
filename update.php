@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
   $colname_Recordset1 = $_GET['id'];
 }
 mysql_select_db($database_cn_db, $cn_db);
-$query_Recordset1 = sprintf("SELECT * FROM db1 WHERE id = %s ORDER BY id ASC", GetSQLValueString($colname_Recordset1, "int"));
+$query_Recordset1 = sprintf("SELECT * FROM db1 WHERE id = %s", GetSQLValueString($colname_Recordset1, "int"));
 $Recordset1 = mysql_query($query_Recordset1, $cn_db) or die(mysql_error());
 $row_Recordset1 = mysql_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);
@@ -50,25 +50,29 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
 
 <body>
 <p>&nbsp;</p>
-<p>實戰之料庫網站</p>
-<table width="575" border="1" cellpadding="0">
-  <tr>
-    <td width="100">ID</td>
-    <td width="121">姓名</td>
-    <td width="112">年齡</td>
-    <td width="121">住址</td>
-    <td width="51">更新</td>
-    <td width="56">刪除</td>
-  </tr>
-  <tr>
-    <td><?php echo $row_Recordset1['id']; ?></td>
-    <td><?php echo $row_Recordset1['name']; ?></td>
-    <td><?php echo $row_Recordset1['Old']; ?></td>
-    <td><?php echo $row_Recordset1['Addr']; ?></td>
-    <td><a href="update.php?id=<?php echo $row_Recordset1['id']; ?>">更新</a></td>
-    <td><a href="detail2.php?id=<?php echo $row_Recordset1['id']; ?>">刪除</a></td>
-  </tr>
-</table>
+<form id="form1" name="form1" method="post" action="">
+  <table width="500" border="1" cellpadding="0">
+    <tr>
+      <td>ID</td>
+      <td><?php echo $row_Recordset1['id']; ?></td>
+    </tr>
+    <tr>
+      <td>姓名</td>
+      <td><?php echo $row_Recordset1['name']; ?></td>
+    </tr>
+    <tr>
+      <td>年齡</td>
+      <td><?php echo $row_Recordset1['Old']; ?></td>
+    </tr>
+    <tr>
+      <td>居住地</td>
+      <td><?php echo $row_Recordset1['Addr']; ?></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input name="update" type="submit" id="update" value="update" /></td>
+    </tr>
+  </table>
+</form>
 <p>&nbsp;</p>
 </body>
 </html>
